@@ -15,20 +15,21 @@ exports.getAddons = async (req, res) => {
 
 exports.addAddons = async (req, res) => {
     try {
-        const { date, name, rate_per_kg, grade, length, width, thickness, maxcost, gst, total_amount, remark, min_sqin, isstandard } = req.body;
+        const { date, name, ratePerKg, grade,weightOfObject, length, width, thickness, maxCost, gst, totalAmount, remark, minSqIn } = req.body;
         const insertData = await AddonsModel.create({
             date,
             name,
-            rate_per_kg,
+            ratePerKg,
             grade,
+            weightOfObject,
             length,
             width,
             thickness,
-            maxcost,
+            maxCost,
             gst,
-            total_amount,
+            totalAmount,
             remark,
-            min_sqin,
+            minSqIn,
             status: 1
         });
         console.log(insertData);
@@ -45,31 +46,33 @@ exports.editAddons = async (req, res) => {
         const {
             id,
             name,
-            rate_per_kg,
+            ratePerKg,
             grade,
+            weightOfObject,
             length,
             width,
             thickness,
-            maxcost,
+            maxCost,
             gst,
             totalamount,
             remark,
-            min_sqin,
+            minSqIn,
         } = req.body;
 
         const editData = await AddonsModel.update(
             {
                 name,
-                rate_per_kg,
+                ratePerKg,
                 grade,
+                weightOfObject,
                 length,
                 width,
                 thickness,
-                maxcost,
+                maxCost,
                 gst,
                 totalamount,
                 remark,
-                min_sqin,
+                minSqIn,
                 status: 1
             },
             {

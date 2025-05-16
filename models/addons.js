@@ -16,13 +16,17 @@ const Addons = sequelize.define('Addons', {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  rate_per_kg: {
+  ratePerKg: {
     type: DataTypes.TEXT,
     allowNull: false
   },
   grade: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+  weightOfObject: {
+    type: DataTypes.TEXT,
+    allowNull:false
   },
   length: {
     type: DataTypes.TEXT,
@@ -45,11 +49,11 @@ const Addons = sequelize.define('Addons', {
     allowNull: true,
     defaultValue: null
   },
-  total_amount: {
+  totalAmount: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  min_sqin: {
+  minSqIn: {
     type: DataTypes.TEXT,
     allowNull: true,
     defaultValue: null

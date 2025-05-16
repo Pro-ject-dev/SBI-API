@@ -12,30 +12,30 @@ const Banks = sequelize.define('banks', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    ac_name: {
+    acName: {
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    ac_type: {
+    acType: {
         type: DataTypes.TEXT,
         allowNull: false
 
     },
-    ifsc_code: {
+    ifscCode: {
         type: DataTypes.TEXT,
         allowNull: false
 
     },
-    bankname: {
+    bankName: {
         type: DataTypes.TEXT,
         allowNull: false
 
     },
-    ac_number: {
+    acNumber: {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    micr_code: {
+    micrCode: {
         type: DataTypes.TEXT,
         allowNull: false,
     },

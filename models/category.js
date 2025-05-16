@@ -1,18 +1,14 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
-const Terms = sequelize.define('Terms', {
+const Category = sequelize.define('category', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    title: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    description: {
+    name: {
         type: DataTypes.TEXT,
         allowNull: false,
     },
@@ -23,15 +19,14 @@ const Terms = sequelize.define('Terms', {
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-
     },
     updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 }, {
-    tableName: 'terms',
+    tableName: 'category',
     timestamps: true
 });
 
-module.exports = Terms;
+module.exports=Category;

@@ -12,17 +12,21 @@ const Product = sequelize.define('Product', {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  productname: {
+  productName: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  rate_per_piece: {
+  ratePerQuantity: {
     type: DataTypes.TEXT,
     allowNull: false
   },
   grade: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+   weightOfObject: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
   length: {
     type: DataTypes.TEXT,
@@ -36,7 +40,7 @@ const Product = sequelize.define('Product', {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  maxcost: {
+  maxCost: {
     type: DataTypes.TEXT,
     allowNull: false
   },
@@ -49,16 +53,16 @@ const Product = sequelize.define('Product', {
     allowNull: true,
     defaultValue: null
   },
-  totalamount: {
+  totalAmount: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  maxsq_in: {
+  maxSqIn: {
     type: DataTypes.TEXT,
     allowNull: true,
     defaultValue: null
   },
-  isstandard: {
+  isStandard: {
     type: DataTypes.TEXT,
     allowNull: false,
   },

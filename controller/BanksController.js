@@ -3,15 +3,15 @@ const BanksModel = require('../models/banks');
 
 exports.addBank = async (req, res) => {
     try {
-        const { title,ac_name, ac_type, ifsc_code, bankname, ac_number, micr_code } = req.body;
+        const { title,acName, acType, ifscCode, bankName, acNumber, micrCode } = req.body;
         const insertData = await BanksModel.create({
             title,
-            ac_name,
-            ac_type,
-            ifsc_code,
-            bankname,
-            ac_number,
-            micr_code, 
+            acName,
+            acType,
+            ifscCode,
+            bankName,
+            acNumber,
+            micrCode, 
             status: 1
         });
         console.log(insertData);
@@ -37,15 +37,15 @@ exports.getBank = async (req, res) => {
 
 exports.editBank = async (req, res) => {
     try {
-        const { id,title, ac_name, ac_type, ifsc_code, bankname, ac_number, micr_code } = req.body;
+        const { id,title, acName, acType, ifscCode, bankName, acNumber, micrCode } = req.body;
         const editData = await BanksModel.update({
             title,
-            ac_name,
-            ac_type,
-            ifsc_code,
-            bankname,
-            ac_number,
-            micr_code
+            acName,
+            acType,
+            ifscCode,
+            bankName,
+            acNumber,
+            micrCode
         }, { where: { id: id } });
         console.log(editData);
         res.status(200).json({ status: true, message: "Bank Updated Successfully!" });
