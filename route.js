@@ -13,7 +13,7 @@ const paymentController = require('./controller/PaymentController');
 const purchaseOrderController = require('./controller/PurchaseOrderController');
 const rawMaterialsController = require('./controller/RawMaterialsController');
 const vendorController = require('./controller/VendorsController');
-
+const ordersController = require('./controller/OrdersController');
 
 
 //PRODUCTS ROUTES---------------------------------------------
@@ -103,14 +103,20 @@ router.delete('/deletePayment',paymentController.deletePayment);
 
 // PURCHASE ORDER ROUTES--------------------------------
 router.get('/getPurchaseOrders', purchaseOrderController.getAllOrders);
+router.put('/updatePurchaseOrderStatus', purchaseOrderController.updatePurchaseOrderStatus);
+
 
 // Raw Materials Routes--------------------------------
-router.get('/getRawMaterials', rawMaterialsController.getAllRawMaterials);
+router.get('/getAllRawMaterials', rawMaterialsController.getAllRawMaterials);
 
 // VENDOR ROUTES--------------------------------
-router.get('/getVendors', vendorController.getAllVendors);
+router.get('/getAllVendors', vendorController.getAllVendors);
 
 
 
+// ORDERS ROUTES--------------------------------
+
+router.get('/getAllOrders' , ordersController.getAllOrders);
+router.get('/getOrderById' , ordersController.getOrdersById);
 
 module.exports=router;

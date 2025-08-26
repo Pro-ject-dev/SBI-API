@@ -86,3 +86,16 @@ exports.deleteOrder = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
+exports.updatePurchaseOrderStatus = async (req, res) => {
+    const { status } = req.body;
+    try {
+        const order = await PurchaseOrders.findByPk(req.query.id);
+        if (!order) return res.status(404).json({ error: 'Order not found' });
+        order.update({ orderStatus: status });
+       res.json({success:true, message: 'Order status updated successfully' });
+    } catch (err) { 
+        res.status(500).json({ error: err.message });
+    }
+};
