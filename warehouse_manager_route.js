@@ -5,6 +5,7 @@ const rawMaterialsController = require('./controller/RawMaterialsController');
 const ordersController = require('./controller/OrdersController');
 const stockAssignmentsController = require('./controller/StockAssignmentController');
 const purchaseOrderController= require('./controller/PurchaseOrderController');
+const employeesController = require('./controller/EmployeesController');
 
 
 router.get('/getAllVendors', vendorController.getAllVendors);
@@ -36,5 +37,13 @@ router.get('/getPurchaseOrderById', purchaseOrderController.getOrderById);
 router.put('/updatePurchaseOrder', purchaseOrderController.updateOrder);
 router.delete('/deletePurchaseOrder', purchaseOrderController.deleteOrder);
 
+
+
+router.get('/getAllEmployees', employeesController.getAllEmployees);
+router.get('/getEmployeeById', employeesController.getEmployeeById);
+router.post('/addEmployee', employeesController.addEmployee);
+router.put('/updateEmployee', employeesController.updateEmployee);
+router.delete('/deleteEmployee', employeesController.deleteEmployee);
+router.get('/getEmployeeNames', employeesController.getEmployeeNames);
 
 module.exports = router;

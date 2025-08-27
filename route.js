@@ -14,6 +14,7 @@ const purchaseOrderController = require('./controller/PurchaseOrderController');
 const rawMaterialsController = require('./controller/RawMaterialsController');
 const vendorController = require('./controller/VendorsController');
 const ordersController = require('./controller/OrdersController');
+const employeesController = require('./controller/EmployeesController');
 
 
 //PRODUCTS ROUTES---------------------------------------------
@@ -118,5 +119,15 @@ router.get('/getAllVendors', vendorController.getAllVendors);
 
 router.get('/getAllOrders' , ordersController.getAllOrders);
 router.get('/getOrderById' , ordersController.getOrdersById);
+
+
+// EMPLOYEES ROUTES--------------------------------
+router.get('/getAllEmployees', employeesController.getAllEmployees);
+router.get('/getEmployeeById', employeesController.getEmployeeById);
+router.post('/addEmployee', employeesController.addEmployee);
+router.put('/updateEmployee', employeesController.updateEmployee);
+router.delete('/deleteEmployee', employeesController.deleteEmployee);
+router.get('/getEmployeeNames', employeesController.getEmployeeNames);
+
 
 module.exports=router;
