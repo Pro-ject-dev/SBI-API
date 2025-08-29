@@ -1,13 +1,25 @@
-module.exports = function (req, res, next) {
-  const authHeader = req.headers['authorization'];
+const jwt = require('jsonwebtoken');
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Missing or invalid Authorization header' });
-  }
-  const token = authHeader.split(' ')[1];
-  if (token !== process.env.API_BEARER_TOKEN) {
-    return res.status(403).json({ message: 'Forbidden: Invalid token' });
-  }
+module.exports = (req, res, next) => {
+  try {
+    // Check if Authorization header exists
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) {
+      return res.status(401).json({ success: false, message: 'No token provided' });
+    }
 
-  next();
+    // Format: "Bearer <token>"
+    const token = authHeader.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({ success: false, message: 'Invalid token format' });
+    }
+
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
+    req.user = decoded; // attach decoded data (id, role, etc.) to request object
+
+    next(); // proceed to next route/controller
+  } catch (err) {
+    return res.status(403).json({ success: false, message: 'Unauthorized', error: err.message });
+  }
 };

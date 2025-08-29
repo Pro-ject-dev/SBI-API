@@ -122,6 +122,7 @@ router.get('/getOrderById' , ordersController.getOrdersById);
 
 
 // EMPLOYEES ROUTES--------------------------------
+router.post('/login', employeesController.login);
 router.get('/getAllEmployees', employeesController.getAllEmployees);
 router.get('/getEmployeeById', employeesController.getEmployeeById);
 router.post('/addEmployee', employeesController.addEmployee);

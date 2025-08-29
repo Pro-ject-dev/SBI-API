@@ -21,7 +21,9 @@ const auth = require('./middleware/Authentication.js');
 const routes = require('./route.js');
 const operation_manager_routes = require('./operation_manager_route.js');
 const warehouse_manager_routes = require('./warehouse_manager_route.js');
+const common_router = require('./common_api.js');
 app.use('/api/admin', auth, routes);
+app.use('/api', common_router);
 app.use('/api/operation_manager', auth, operation_manager_routes);
 app.use('/api/warehouse_manager', auth, warehouse_manager_routes);
 
