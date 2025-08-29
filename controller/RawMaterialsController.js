@@ -1,5 +1,6 @@
 const {Vendor,Rawmaterial} = require('../models/rawmaterialsassociation');
 const { Op } = require('sequelize');
+const sequelize = require('../config/db');
 
 
 exports.getAllRawMaterials = async (req, res) => {
@@ -65,6 +66,22 @@ exports.getRawMaterialbyName = async (req, res) => {
 };
 
 
+exports.getRawMaterialbyBarcode = async (req, res) => {
+    try {
+        const {barcode} = req.query;
+        const rawmaterials = await Rawmaterial.findOne({
+            where: { status: "1",barcode:barcode},
+            include: [{ model: Vendor, attributes: ['name', 'email', 'phone'] ,as: 'vendor', }],
+            order: [['createdAt', 'DESC']]
+        });
+
+        res.status(200).json({ success: true, data: rawmaterials });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Failed to fetch raw materials', error: error.message });
+    }
+};
+
+
 exports.addRawMaterial = async (req, res) => {
     try {
         const {
@@ -89,6 +106,8 @@ exports.addRawMaterial = async (req, res) => {
             vendorId,
             status: "1"
         });
+
+        await Rawmaterial.update({barcode:`SBICRM-100000${newMaterial.id.toString()}`},{where:{id:newMaterial.id}})
 
         res.status(200).json({ success: true, message: "Raw Materials Added" });
     } catch (error) {
@@ -130,5 +149,24 @@ exports.deleteRawMaterial = async (req, res) => {
         res.status(200).json({ success: true, message: 'Raw material safely deleted (status set to 0)' });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Delete failed', error: error.message });
+    }
+};
+
+exports.getLowStockAlerts = async (req, res) => {
+    try {
+        const lowStockMaterials = await Rawmaterial.findAll({
+            where: {
+                status: '1',
+                [Op.and]: [
+                    sequelize.literal('CAST(currentStock AS DECIMAL) <= CAST(minimumStock AS DECIMAL)')
+                ]
+            },
+            include: [{ model: Vendor, attributes: ['name', 'email', 'phone'], as: 'vendor' }],
+            order: [['createdAt', 'DESC']]
+        });
+
+        res.status(200).json({ success: true, data: lowStockMaterials });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Failed to fetch low stock alerts', error: error.message });
     }
 };

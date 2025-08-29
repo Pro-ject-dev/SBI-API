@@ -18,6 +18,10 @@ router.delete('/deleteVendor', vendorController.deleteVendor);
 router.get('/getAllRawMaterials', rawMaterialsController.getAllRawMaterials);
 router.get('/getRawMaterialById', rawMaterialsController.getRawMaterialbyId);
 router.get('/getRawMaterialByName', rawMaterialsController.getRawMaterialbyName);
+router.get('/getRawMaterialByBarcode', rawMaterialsController.getRawMaterialbyBarcode);
+router.get('/getLowStockAlerts', rawMaterialsController.getLowStockAlerts);
+
+
 router.post('/addRawMaterial', rawMaterialsController.addRawMaterial);    
 router.put('/updateRawMaterial', rawMaterialsController.updateRawMaterial); 
 router.delete('/deleteRawMaterial', rawMaterialsController.deleteRawMaterial); 
