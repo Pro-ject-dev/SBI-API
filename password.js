@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const { Employee } = require('./models/employees'); // adjust path to your sequelize model
 
 (async () => {
   try {
