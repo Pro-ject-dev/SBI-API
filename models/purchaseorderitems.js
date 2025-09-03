@@ -23,6 +23,18 @@ const PurchaseOrderItem = sequelize.define('PurchaseOrderItem', {
     unitPrice: {
         type: DataTypes.TEXT
     },
+    unit: {
+        type: DataTypes.TEXT
+    },
+    specification: {
+        type: DataTypes.TEXT
+    },
+    gst: {
+        type: DataTypes.TEXT
+    },
+    deliveryDate: {
+        type: DataTypes.TEXT
+    },
     totalPrice: {
         type: DataTypes.TEXT
     },

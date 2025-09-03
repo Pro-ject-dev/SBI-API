@@ -16,6 +16,9 @@ const PurchaseOrder = sequelize.define('PurchaseOrder', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    vendorAddress: {
+        type: DataTypes.TEXT
+    },
     totalAmount: {
         type: DataTypes.TEXT
     },
@@ -32,6 +35,30 @@ const PurchaseOrder = sequelize.define('PurchaseOrder', {
         type: DataTypes.TEXT
     },
     approvedDate: {
+        type: DataTypes.TEXT
+    },
+    cgst: {
+        type: DataTypes.TEXT
+    },
+    sgst: {
+        type: DataTypes.TEXT
+    },
+    deliveryDate: {
+        type: DataTypes.TEXT
+    },
+    paymentNote: {
+        type: DataTypes.TEXT
+    },
+    deliveryNote: {
+        type: DataTypes.TEXT
+    },
+    insurance: {
+        type: DataTypes.TEXT
+    },
+    warranty: {
+        type: DataTypes.TEXT
+    },
+    remarks: {
         type: DataTypes.TEXT
     },
     notes: {
